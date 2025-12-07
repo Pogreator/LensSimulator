@@ -1,0 +1,59 @@
+[gd_scene load_steps=4 format=3 uid="uid://coiwt7gnx0ich"]
+
+[ext_resource type="PackedScene" uid="uid://uk2yne7aibnp" path="res://src/ui.tscn" id="1_eewff"]
+[ext_resource type="PackedScene" uid="uid://cdwncqpb4bxt" path="res://assets/parts/ray_emitter/ray_emitter.tscn" id="2_gh0ne"]
+[ext_resource type="PackedScene" uid="uid://nsa1q7vv0hqk" path="res://assets/parts/sdf_object/sdf_object.tscn" id="3_5q4o7"]
+
+[node name="Main" type="Node2D"]
+
+[node name="BackgroundLayer" type="CanvasLayer" parent="."]
+layer = -10
+
+[node name="ColorRect" type="ColorRect" parent="BackgroundLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.2058998, 0.25967586, 0.3343499, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="UI" type="CanvasLayer" parent="."]
+layer = 10
+
+[node name="UI" parent="UI" instance=ExtResource("1_eewff")]
+
+[node name="Objects" type="CanvasLayer" parent="."]
+layer = 2
+follow_viewport_enabled = true
+
+[node name="RayEmitter" parent="Objects" instance=ExtResource("2_gh0ne")]
+position = Vector2(100, 360)
+size = 100.0
+ray_amount = 32
+step = 0.1
+steps_per_tick = 20
+
+[node name="SDFObject5" parent="Objects" instance=ExtResource("3_5q4o7")]
+position = Vector2(282, 360)
+type = 2
+surface_type = 1
+refraction_index = 1.5
+radius = 100.0
+sdf_size = Vector2(16, 100)
+
+[node name="SDFObject6" parent="Objects" instance=ExtResource("3_5q4o7")]
+position = Vector2(509, 360)
+type = 2
+surface_type = 1
+refraction_index = 1.5
+radius = 100.0
+sdf_size = Vector2(4, 25)
+
+[node name="SDFObject7" parent="Objects" instance=ExtResource("3_5q4o7")]
+position = Vector2(698, 360)
+rotation = 0.7853982
+type = 1
+refraction_index = 1.5
+radius = 100.0
+sdf_size = Vector2(4, 100)
